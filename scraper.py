@@ -220,43 +220,32 @@ class OLXScraper:
         Returns:
             Description text or None if extraction fails
         """
-        print(f"  [DEBUG] Fetching description from: {link}")
         soup = self.fetch_page(link)
         if not soup:
-            print(f"  [DEBUG] Failed to fetch page")
             return None
-        
-        print(f"  [DEBUG] Page fetched successfully")
         
         try:
             # Method 1: Look for the full description div (data-cy="adPageAdDescription")
             # This contains the complete description even if it's hidden behind "Mai mult" button
             desc_div = soup.find('div', {'data-cy': 'adPageAdDescription'})
-            print(f"  [DEBUG] Method 1: Found div[data-cy='adPageAdDescription']: {desc_div is not None}")
             if desc_div:
                 # Try to get text from span inside the div first
                 desc_span = desc_div.find('span')
-                print(f"  [DEBUG] Method 1: Found span inside div: {desc_span is not None}")
                 if desc_span:
                     # Get all text, preserving paragraph structure
                     desc_text = desc_span.get_text(separator='\n', strip=True)
-                    print(f"  [DEBUG] Method 1: Text from span (\\n): '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                     # If that doesn't work, try with space separator
                     if not desc_text or len(desc_text.strip()) < 10:
                         desc_text = desc_span.get_text(separator=' ', strip=True)
-                        print(f"  [DEBUG] Method 1: Text from span (space): '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                 else:
                     # If no span, get text directly from div
                     desc_text = desc_div.get_text(separator='\n', strip=True)
-                    print(f"  [DEBUG] Method 1: Text from div (\\n): '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                     if not desc_text or len(desc_text.strip()) < 10:
                         desc_text = desc_div.get_text(separator=' ', strip=True)
-                        print(f"  [DEBUG] Method 1: Text from div (space): '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                 
                 if desc_text:
                     # Clean HTML tags and normalize whitespace
                     desc_text = self._clean_description(desc_text)
-                    print(f"  [DEBUG] Method 1: After cleaning: '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                     # Filter out button text and other non-description content
                     if desc_text and len(desc_text.strip()) > 10:
                         desc_lower = desc_text.lower()
@@ -265,23 +254,14 @@ class OLXScraper:
                             desc_text = re.sub(r'(?i)\s*mai\s*mult\s*\.?\.?\.?\s*$', '', desc_text).strip()
                             desc_text = re.sub(r'(?i)^mai\s*mult\s*\.?\.?\.?\s*', '', desc_text).strip()
                             if desc_text and len(desc_text.strip()) > 10:
-                                print(f"  [DEBUG] Method 1: SUCCESS - Returning description")
                                 return desc_text
-                        else:
-                            print(f"  [DEBUG] Method 1: Filtered out (button text detected)")
-                    else:
-                        print(f"  [DEBUG] Method 1: Text too short after cleaning")
-                else:
-                    print(f"  [DEBUG] Method 1: No text extracted")
             
             # Method 2: Find the Descriere heading and look for description nearby
             desc_heading = soup.find('h2', {'data-sentry-source-file': 'AdDescription.tsx'}, string=re.compile('Descriere'))
-            print(f"  [DEBUG] Method 2: Found h2[data-sentry-source-file='AdDescription.tsx']: {desc_heading is not None}")
             
             if not desc_heading:
                 # Try alternative search
                 desc_heading = soup.find('h2', string=re.compile('Descriere', re.I))
-                print(f"  [DEBUG] Method 2: Found h2 with 'Descriere' text: {desc_heading is not None}")
             
             if desc_heading:
                 # Find the parent container
@@ -321,42 +301,17 @@ class OLXScraper:
             
             # Method 3: Fallback - search for description in common locations
             desc_div = soup.find('div', {'data-cy': 'ad_description'})
-            print(f"  [DEBUG] Method 3: Found div[data-cy='ad_description']: {desc_div is not None}")
             if desc_div:
                 desc_text = desc_div.get_text(strip=True)
-                print(f"  [DEBUG] Method 3: Text extracted: '{desc_text[:100] if desc_text else 'None'}...'")
                 # Check if it's just "Mai Mult"
                 if desc_text.lower() not in ['mai mult', 'mai mult...', 'show more', 'vezi mai mult']:
                     desc_text = self._clean_description(desc_text)
-                    print(f"  [DEBUG] Method 3: After cleaning: '{desc_text[:100] if desc_text else 'None'}...'")
                     if desc_text:
-                        print(f"  [DEBUG] Method 3: SUCCESS - Returning description")
                         return desc_text
             
-            # Method 4: Try to find any div or section with description-like content
-            print(f"  [DEBUG] Method 4: Trying to find description by searching for common patterns")
-            # Look for any div containing substantial text that might be description
-            all_divs = soup.find_all('div')
-            for div in all_divs:
-                div_text = div.get_text(separator=' ', strip=True)
-                # Check if it's a substantial text block (more than 50 chars) and doesn't look like navigation/menu
-                if len(div_text) > 50 and len(div_text) < 5000:
-                    # Check if it contains description-like keywords
-                    if any(keyword in div_text.lower() for keyword in ['apartament', 'camere', 'inchiriaza', 'inchiriat', 'mobilat', 'centrala']):
-                        # Check if it's not button text or menu
-                        if div_text.lower() not in ['mai mult', 'raportează', 'raporteaza'] and 'button' not in str(div.get('class', [])).lower():
-                            print(f"  [DEBUG] Method 4: Found potential description div: '{div_text[:100]}...'")
-                            desc_text = self._clean_description(div_text)
-                            if desc_text and len(desc_text.strip()) > 50:
-                                print(f"  [DEBUG] Method 4: SUCCESS - Returning description")
-                                return desc_text
-            
         except Exception as e:
-            print(f"  [DEBUG] ERROR extracting description from {link}: {e}")
-            import traceback
-            traceback.print_exc()
+            print(f"Error extracting description from {link}: {e}")
         
-        print(f"  -> Warning: Could not extract description from {link}")
         return None
     
     def _clean_description(self, description: str) -> str:
