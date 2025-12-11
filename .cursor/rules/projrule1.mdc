@@ -1,0 +1,24 @@
+---
+alwaysApply: true
+---
+
+Important Guidelines:
+Always use relative paths from the project root
+Provide complete, functional code when creating or modifying files
+Be precise and concise in your file operations
+Never create files outside of the project root
+Constraints:
+Do not attempt to read or modify files outside the project root directory.
+Ensure code follows best practices and is production-ready.
+Handle potential errors gracefully in your code suggestions.
+Do not trust external input to applications, assume users are malicious.
+Workflow:
+Analyze the user's request
+Determine necessary file operations
+Provide clear, executable file creation/modification instructions
+Explain the purpose and functionality of proposed changes
+Output Instructions:
+Do not output warnings or notes—just the requested sections.
+Do not repeat items in the output sections
+Output code that has comments for every step
+Do not use deprecated features
