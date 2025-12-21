@@ -72,6 +72,9 @@ class OLXScraper:
     # Database file path
     DB_FILE = "listings_db.json"
     
+    # Global debug flag - set to True to enable debug output
+    DEBUG_ENABLED = False
+    
     def __init__(self):
         """Initialize the scraper"""
         self.session = requests.Session()
@@ -80,6 +83,28 @@ class OLXScraper:
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         })
         self.listings = []
+    
+    @classmethod
+    def enable_debug(cls, enabled: bool = True):
+        """
+        Enable or disable debug output
+        
+        Args:
+            enabled: True to enable debug output, False to disable
+        """
+        cls.DEBUG_ENABLED = enabled
+        status = "enabled" if enabled else "disabled"
+        print(f"Debug mode {status}")
+    
+    def _debug(self, message: str):
+        """
+        Print debug message if debug is enabled
+        
+        Args:
+            message: Debug message to print
+        """
+        if self.DEBUG_ENABLED:
+            print(message)
     
     def fetch_page(self, url: str) -> Optional[BeautifulSoup]:
         """
@@ -220,32 +245,43 @@ class OLXScraper:
         Returns:
             Description text or None if extraction fails
         """
+        self._debug(f"  [DEBUG] Fetching description from: {link}")
         soup = self.fetch_page(link)
         if not soup:
+            self._debug(f"  [DEBUG] Failed to fetch page")
             return None
+        
+        self._debug(f"  [DEBUG] Page fetched successfully")
         
         try:
             # Method 1: Look for the full description div (data-cy="adPageAdDescription")
             # This contains the complete description even if it's hidden behind "Mai mult" button
             desc_div = soup.find('div', {'data-cy': 'adPageAdDescription'})
+            self._debug(f"  [DEBUG] Method 1: Found div[data-cy='adPageAdDescription']: {desc_div is not None}")
             if desc_div:
                 # Try to get text from span inside the div first
                 desc_span = desc_div.find('span')
+                self._debug(f"  [DEBUG] Method 1: Found span inside div: {desc_span is not None}")
                 if desc_span:
                     # Get all text, preserving paragraph structure
                     desc_text = desc_span.get_text(separator='\n', strip=True)
+                    self._debug(f"  [DEBUG] Method 1: Text from span (\\n): '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                     # If that doesn't work, try with space separator
                     if not desc_text or len(desc_text.strip()) < 10:
                         desc_text = desc_span.get_text(separator=' ', strip=True)
+                        self._debug(f"  [DEBUG] Method 1: Text from span (space): '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                 else:
                     # If no span, get text directly from div
                     desc_text = desc_div.get_text(separator='\n', strip=True)
+                    self._debug(f"  [DEBUG] Method 1: Text from div (\\n): '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                     if not desc_text or len(desc_text.strip()) < 10:
                         desc_text = desc_div.get_text(separator=' ', strip=True)
+                        self._debug(f"  [DEBUG] Method 1: Text from div (space): '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                 
                 if desc_text:
                     # Clean HTML tags and normalize whitespace
                     desc_text = self._clean_description(desc_text)
+                    self._debug(f"  [DEBUG] Method 1: After cleaning: '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                     # Filter out button text and other non-description content
                     if desc_text and len(desc_text.strip()) > 10:
                         desc_lower = desc_text.lower()
@@ -254,14 +290,23 @@ class OLXScraper:
                             desc_text = re.sub(r'(?i)\s*mai\s*mult\s*\.?\.?\.?\s*$', '', desc_text).strip()
                             desc_text = re.sub(r'(?i)^mai\s*mult\s*\.?\.?\.?\s*', '', desc_text).strip()
                             if desc_text and len(desc_text.strip()) > 10:
+                                self._debug(f"  [DEBUG] Method 1: SUCCESS - Returning description")
                                 return desc_text
+                        else:
+                            self._debug(f"  [DEBUG] Method 1: Filtered out (button text detected)")
+                    else:
+                        self._debug(f"  [DEBUG] Method 1: Text too short after cleaning")
+                else:
+                    self._debug(f"  [DEBUG] Method 1: No text extracted")
             
             # Method 2: Find the Descriere heading and look for description nearby
             desc_heading = soup.find('h2', {'data-sentry-source-file': 'AdDescription.tsx'}, string=re.compile('Descriere'))
+            self._debug(f"  [DEBUG] Method 2: Found h2[data-sentry-source-file='AdDescription.tsx']: {desc_heading is not None}")
             
             if not desc_heading:
                 # Try alternative search
                 desc_heading = soup.find('h2', string=re.compile('Descriere', re.I))
+                self._debug(f"  [DEBUG] Method 2: Found h2 with 'Descriere' text: {desc_heading is not None}")
             
             if desc_heading:
                 # Find the parent container
@@ -301,17 +346,25 @@ class OLXScraper:
             
             # Method 3: Fallback - search for description in common locations
             desc_div = soup.find('div', {'data-cy': 'ad_description'})
+            self._debug(f"  [DEBUG] Method 3: Found div[data-cy='ad_description']: {desc_div is not None}")
             if desc_div:
                 desc_text = desc_div.get_text(strip=True)
+                self._debug(f"  [DEBUG] Method 3: Text extracted: '{desc_text[:100] if desc_text else 'None'}...'")
                 # Check if it's just "Mai Mult"
                 if desc_text.lower() not in ['mai mult', 'mai mult...', 'show more', 'vezi mai mult']:
                     desc_text = self._clean_description(desc_text)
+                    self._debug(f"  [DEBUG] Method 3: After cleaning: '{desc_text[:100] if desc_text else 'None'}...'")
                     if desc_text:
+                        self._debug(f"  [DEBUG] Method 3: SUCCESS - Returning description")
                         return desc_text
             
         except Exception as e:
-            print(f"Error extracting description from {link}: {e}")
+            self._debug(f"  [DEBUG] ERROR extracting description from {link}: {e}")
+            if self.DEBUG_ENABLED:
+                import traceback
+                traceback.print_exc()
         
+        print(f"  -> Warning: Could not extract description from {link}")
         return None
     
     def _clean_description(self, description: str) -> str:
@@ -537,23 +590,32 @@ class OLXScraper:
                 print(f"  -> Skipped (short-term rental detected in title)")
                 continue
             
-            # Fetch description
-            description = self.fetch_description(listing['link'])
-            
-            if description:
-                # Check description for short-term rental keywords
-                if self.is_short_term_rental(description):
-                    print(f"  -> Skipped (short-term rental detected in description)")
-                    continue
-                
-                listing['description'] = description
+            # Skip description fetching for storia.ro links
+            if 'storia.ro' in listing['link']:
+                print(f"  -> Skipping description fetch for storia.ro link")
+                description = None
+                listing['description'] = None
             else:
-                print(f"  -> Warning: Could not fetch description")
-                description = ""
+                # Fetch description for non-storia.ro links
+                description = self.fetch_description(listing['link'])
+                
+                if description:
+                    # Check description for short-term rental keywords
+                    if self.is_short_term_rental(description):
+                        print(f"  -> Skipped (short-term rental detected in description)")
+                        continue
+                    
+                    listing['description'] = description
+                else:
+                    print(f"  -> Warning: Could not fetch description")
+                    description = ""
+                    listing['description'] = None
             
             # Extract floor and lift information from title and description
-            floor_info = self.extract_floor_info(listing['title'], description)
-            lift_info = self.extract_lift_info(listing['title'], description)
+            # Use empty string if description is None to avoid errors
+            description_text = description if description else ""
+            floor_info = self.extract_floor_info(listing['title'], description_text)
+            lift_info = self.extract_lift_info(listing['title'], description_text)
             
             listing['floor'] = floor_info
             listing['lift'] = lift_info
@@ -638,6 +700,10 @@ if __name__ == "__main__":
     import sys
     from telegram_notifier import TelegramNotifier
     
+    # Enable/disable debug mode (set to True to see debug output)
+    # OLXScraper.enable_debug(True)  # Uncomment to enable debug mode
+    # OLXScraper.enable_debug(False)  # Uncomment to disable debug mode
+    
     scraper = OLXScraper()
     print("Starting OLX scraper...")
     
@@ -671,10 +737,18 @@ if __name__ == "__main__":
                     if bot_token and chat_id:
                         notifier = TelegramNotifier(bot_token, chat_id)
                         print("\nSending Telegram notifications...")
-                        if notifier.send_listings(new_listings_sorted):
-                            print("✓ Notifications sent successfully!")
-                        else:
-                            print("✗ Some notifications failed to send")
+                        try:
+                            if notifier.send_listings(new_listings_sorted):
+                                print("✓ Notifications sent successfully!")
+                            else:
+                                print("✗ Some notifications failed to send")
+                        except Exception as send_error:
+                            print(f"\n✗ Error sending Telegram notifications: {send_error}")
+                            import traceback
+                            traceback.print_exc()
+                            print("\nNew listings found:")
+                            for listing in new_listings:
+                                print(f"  - {listing['title']} - {listing['price']}€")
                     else:
                         print("\n⚠ Telegram configuration incomplete. Skipping notifications.")
                         print("New listings found:")
@@ -682,7 +756,9 @@ if __name__ == "__main__":
                             print(f"  - {listing['title']} - {listing['price']}€")
             except Exception as e:
                 print(f"\nError loading Telegram config: {e}")
-                print("New listings found:")
+                import traceback
+                traceback.print_exc()
+                print("\nNew listings found:")
                 for listing in new_listings:
                     print(f"  - {listing['title']} - {listing['price']}€")
         else:
