@@ -2,7 +2,8 @@
 config.json
 
 # Database files
-listings_db.json
+# Note: listings_db.json is tracked in git for GitHub Actions persistence
+# listings_db.json
 
 # Python
 __pycache__/
