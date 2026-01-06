@@ -722,5 +722,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-01-05T18:45:08.404022"
+  },
+  {
+    "title": "Inchiriez apartament 2 camere!",
+    "price": 300.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-2-camere-IDk9jvo.html",
+    "description": "Inchiriez un apartament cu doua camere in Valea Rosie etajul 3.",
+    "floor": "3/?",
+    "lift": null,
+    "found_at": "2026-01-06T07:36:56.993331"
   }
 ]
