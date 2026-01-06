@@ -740,5 +740,14 @@
     "floor": "2/4",
     "lift": null,
     "found_at": "2026-01-06T08:33:40.761061"
+  },
+  {
+    "title": "Apartament 3 camere, 75 mp, zona Sarari",
+    "price": 470.0,
+    "link": "https://www.storia.ro/ro/oferta/apartament-3-camere-75-mp-zona-sarari-IDFaAh.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-01-06T08:59:53.498485"
   }
 ]
