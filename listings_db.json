@@ -776,5 +776,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-01-07T08:33:24.858876"
+  },
+  {
+    "title": "Inchiriez apt. 4 camere",
+    "price": 450.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apt-4-camere-IDjOpHW.html",
+    "description": "Proprietar. Inchiriez apt. 4 camere decomandate, etaj1/4, 82 mp, Rovine, C-uri, 1 balcon, mobilat, utilat.",
+    "floor": "1/4",
+    "lift": null,
+    "found_at": "2026-01-07T11:21:25.858426"
   }
 ]
