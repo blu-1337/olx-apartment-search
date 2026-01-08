@@ -821,5 +821,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-01-08T11:56:22.920817"
+  },
+  {
+    "title": "Inchiriez apartament Nanterre",
+    "price": 400.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-nanterre-IDj5754.html",
+    "description": "Închiriez apartament cu 3 camere semidecomandat la etajul 3 pe strada Nanterre, vis-a-vis de parcul Puskin, scoala 22 si la 2 minute de grădinița Dumbrava minunată. 2 dormitoare plus living cu canapea extensibila. Se da mobilat si utilat cu 2 televizoare( unul smart), mașină de spălat, frigider, aragaz.Preț 400€/luna+ 400€ garanție.",
+    "floor": "3/?",
+    "lift": null,
+    "found_at": "2026-01-08T15:38:44.615531"
   }
 ]
