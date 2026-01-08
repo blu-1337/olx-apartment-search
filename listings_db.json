@@ -794,5 +794,14 @@
     "floor": "3/4",
     "lift": null,
     "found_at": "2026-01-08T08:33:03.045531"
+  },
+  {
+    "title": "3semidecomadate,centrala termica,etaj 2,Calea Bucuresti-Piata Centrala",
+    "price": 430.0,
+    "link": "https://www.storia.ro/ro/oferta/3semidecomadate-centrala-termica-etaj-2-calea-bucuresti-piata-centrala-IDFSA0.html",
+    "description": null,
+    "floor": "2/?",
+    "lift": null,
+    "found_at": "2026-01-08T09:00:10.828921"
   }
 ]
