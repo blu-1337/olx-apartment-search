@@ -848,5 +848,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-01-10T18:39:33.279111"
+  },
+  {
+    "title": "Apartament de inchiriat",
+    "price": 380.0,
+    "link": "https://www.olx.ro/d/oferta/apartament-de-inchiriat-IDkaoxe.html",
+    "description": "Apartament de inchiriat, zona Lapus, Craiova",
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-01-10T19:18:40.230167"
   }
 ]
