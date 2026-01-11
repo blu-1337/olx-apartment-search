@@ -893,5 +893,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-01-11T10:46:27.607214"
+  },
+  {
+    "title": "Inchiriez apartament 3camere",
+    "price": 400.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-3camere-IDk5EjM.html",
+    "description": "Închiriez apartament 3 camere decomandate et 1/4 zona piața mare , foarte aproape de granița Petrache Poenaru, lângă școala nr 21. Apartamentul are centrală proprie, este complet mobilat și utilatPentru mai multe detalii sunați la nr de telefon 07******72",
+    "floor": "1/4",
+    "lift": null,
+    "found_at": "2026-01-11T18:43:48.657571"
   }
 ]
