@@ -1406,5 +1406,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-01-12T17:58:36.423439"
+  },
+  {
+    "title": "Apartament decomandat, patru camere, et. 3, Rovine-Parculet",
+    "price": 470.0,
+    "link": "https://www.storia.ro/ro/oferta/apartament-decomandat-patru-camere-et-3-rovine-parculet-IDG1a5.html",
+    "description": null,
+    "floor": "3/?",
+    "lift": null,
+    "found_at": "2026-01-12T19:31:42.564603"
   }
 ]
