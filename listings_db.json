@@ -1478,5 +1478,23 @@
     "floor": "1/?",
     "lift": null,
     "found_at": "2026-01-14T09:55:12.293401"
+  },
+  {
+    "title": "3 camere 1Mai - Pelendava, etaj2, centrala termica, 2 dormitoare",
+    "price": 360.0,
+    "link": "https://www.storia.ro/ro/oferta/3-camere-1mai-pelendava-etaj2-centrala-termica-2-dormitoare-IDG2fc.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-01-14T10:13:22.420522"
+  },
+  {
+    "title": "3 camere semidecomandate, etaj 1, centrala termica - 400 Euro",
+    "price": 400.0,
+    "link": "https://www.storia.ro/ro/oferta/3-camere-semidecomandate-etaj-1-centrala-termica-400-euro-IDG2dZ.html",
+    "description": null,
+    "floor": "1/?",
+    "lift": null,
+    "found_at": "2026-01-14T10:13:22.420522"
   }
 ]
