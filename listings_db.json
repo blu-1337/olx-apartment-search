@@ -1559,5 +1559,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-01-16T15:13:00.302313"
+  },
+  {
+    "title": "Închiriere apartament",
+    "price": 360.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriere-apartament-IDjIgLr.html",
+    "description": "Închiriez apartament. 3 camere 80 mp, 2 dormitoare, bucătărie, 2 bai, aer condiționat, centrala proprie, Wi-Fi, et 4, G Enescu,disponibil pe perioada mare.",
+    "floor": "4/?",
+    "lift": null,
+    "found_at": "2026-01-16T16:47:27.410360"
   }
 ]
