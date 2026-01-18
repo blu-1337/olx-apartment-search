@@ -1640,5 +1640,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-01-18T09:46:29.587551"
+  },
+  {
+    "title": "Închiriez apartament",
+    "price": 450.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-IDkbt4S.html",
+    "description": "Închiriez apartament 3 camere ,centrala proprie , Craiovita Noua , zona \"Big-ul vechi \"Mai multe detalii la telefon",
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-01-18T14:30:46.315654"
   }
 ]
