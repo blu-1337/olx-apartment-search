@@ -1685,5 +1685,23 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-01-18T17:52:08.534383"
+  },
+  {
+    "title": "Apartament cu 3 camere de inchiriat",
+    "price": 450.0,
+    "link": "https://www.storia.ro/ro/oferta/apartament-cu-3-camere-de-inchiriat-IDG5fh.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-01-19T09:53:44.312018"
+  },
+  {
+    "title": "Apartament cu 3 camere de inchiriat- Brazda lui Novac",
+    "price": 450.0,
+    "link": "https://www.storia.ro/ro/oferta/apartament-cu-3-camere-de-inchiriat-brazda-lui-novac-IDG5eN.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-01-19T09:53:44.312018"
   }
 ]
