@@ -1856,5 +1856,32 @@
     "floor": "4/4",
     "lift": null,
     "found_at": "2026-01-21T20:02:32.017149"
+  },
+  {
+    "title": "Închiriez casă, Craiova, 1 Mai",
+    "price": 400.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-casa-craiova-1-mai-IDjBJzK.html",
+    "description": "Închiriez casă cu 2 camere, bucătărie, baie, complet mobilată și utilată, în Craiova, 1Mai, pe strada Rosmarinilor, strada cu Senata roți și cauciucuri. Pentru detalii - tel. 07******56",
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-01-21T21:38:24.345261"
+  },
+  {
+    "title": "Închiriez casă Craiova,1 Mai",
+    "price": 400.0,
+    "link": "https://www.publi24.ro/anunturi/imobiliare/de-inchiriat/case-vile/anunt/inchiriez-casa-craiova-1-mai/27hh7i8hd0d6701825f629dgde4fh99h.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-01-21T21:38:38.353101"
+  },
+  {
+    "title": "Închiriez casă Craiova,1 Mai",
+    "price": 400.0,
+    "link": "https://www.publi24.ro/anunturi/imobiliare/de-inchiriat/case-vile/anunt/inchiriez-casa-craiova-1-mai/27hh7i8hd0d6701825f629dgde4fh99h.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-01-21T21:38:38.353101"
   }
 ]
