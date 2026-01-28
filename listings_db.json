@@ -2072,5 +2072,23 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-01-28T10:49:33.706206"
+  },
+  {
+    "title": "Inchiriez apartament",
+    "price": 100.0,
+    "link": "https://www.publi24.ro/anunturi/imobiliare/de-inchiriat/apartamente/apartamente-3-camere/anunt/inchiriez-apartament/e241680d78dd7h162di4496f750h0de0.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-01-28T11:48:49.615885"
+  },
+  {
+    "title": "Inchiriez apartament cu 3 camere in Craiova",
+    "price": 100.0,
+    "link": "https://www.publi24.ro/anunturi/imobiliare/de-inchiriat/apartamente/apartamente-3-camere/anunt/inchiriez-apartament-cu-3-camere-in-craiova/8042df1h156e7fhf27hh6621dg831985.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-01-28T11:48:49.615885"
   }
 ]
