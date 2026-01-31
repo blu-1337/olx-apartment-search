@@ -2144,5 +2144,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-01-30T19:41:47.101067"
+  },
+  {
+    "title": "Apartament de inchiriat",
+    "price": 400.0,
+    "link": "https://www.olx.ro/d/oferta/apartament-de-inchiriat-IDkdPKu.html",
+    "description": "Apartament cu 3 camere de inchiriat, etaj 2, Craiova, cartier Brazda lui Novac, centrala si apa separat.",
+    "floor": "2/?",
+    "lift": null,
+    "found_at": "2026-01-31T09:54:33.415837"
   }
 ]
