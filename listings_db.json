@@ -2738,5 +2738,14 @@
     "floor": "4/?",
     "lift": null,
     "found_at": "2026-02-06T15:00:45.243335"
+  },
+  {
+    "title": "Inchiriere apartament",
+    "price": 360.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriere-apartament-IDkf2oQ.html?search_reason=search%7Corganic",
+    "description": "Aprtament 3 camere, 2 bai, 2 dormitoare cu paturi matrimoniale, bucatarie complet mobilata, disponibila imediat pana la 30 iunie 2026.",
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-02-07T10:23:02.218546"
   }
 ]
