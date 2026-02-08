@@ -2792,5 +2792,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-02-08T17:50:41.425705"
+  },
+  {
+    "title": "Apartament 3 decomandate Scala 12 Severinului 3/4 centrală mobilat",
+    "price": 350.0,
+    "link": "https://www.storia.ro/ro/oferta/apartament-3-decomandate-scala-12-severinului-3-4-central-mobilat-IDGiZZ.html",
+    "description": null,
+    "floor": "3/4",
+    "lift": null,
+    "found_at": "2026-02-08T19:39:34.685365"
   }
 ]
