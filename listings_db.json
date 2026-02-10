@@ -2837,5 +2837,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-02-09T22:24:26.063704"
+  },
+  {
+    "title": "Apartament 3 decomandate Școala 12 3/4 centrala mobilat",
+    "price": 320.0,
+    "link": "https://www.storia.ro/ro/oferta/apartament-3-decomandate-coala-12-3-4-centrala-mobilat-IDGkjB.html",
+    "description": null,
+    "floor": "3/4",
+    "lift": null,
+    "found_at": "2026-02-10T11:31:27.707937"
   }
 ]
