@@ -2882,5 +2882,14 @@
     "floor": "intermediar",
     "lift": null,
     "found_at": "2026-02-10T16:46:36.870245"
+  },
+  {
+    "title": "Inchiriez apartament 3 camere, 78mp",
+    "price": 353.62,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-3-camere-78mp-IDjtatH.html?search_reason=search%7Corganic",
+    "description": "Apartament 3 camere, decomandat, et 7/10, utilat complet, centrala, AC, mobila, spatii de depozitare, zona linistita, bloc termoizolat, garantie si contract, zona LIDL Craiovita",
+    "floor": "7/10",
+    "lift": null,
+    "found_at": "2026-02-10T18:41:42.374570"
   }
 ]
