@@ -72,6 +72,9 @@ class OLXScraper:
     # Database file path
     DB_FILE = "listings_db.json"
     
+    # Global debug flag - set to True to enable debug output
+    DEBUG_ENABLED = False
+    
     def __init__(self):
         """Initialize the scraper"""
         self.session = requests.Session()
@@ -80,6 +83,28 @@ class OLXScraper:
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         })
         self.listings = []
+    
+    @classmethod
+    def enable_debug(cls, enabled: bool = True):
+        """
+        Enable or disable debug output
+        
+        Args:
+            enabled: True to enable debug output, False to disable
+        """
+        cls.DEBUG_ENABLED = enabled
+        status = "enabled" if enabled else "disabled"
+        print(f"Debug mode {status}")
+    
+    def _debug(self, message: str):
+        """
+        Print debug message if debug is enabled
+        
+        Args:
+            message: Debug message to print
+        """
+        if self.DEBUG_ENABLED:
+            print(message)
     
     def fetch_page(self, url: str) -> Optional[BeautifulSoup]:
         """
@@ -220,32 +245,43 @@ class OLXScraper:
         Returns:
             Description text or None if extraction fails
         """
+        self._debug(f"  [DEBUG] Fetching description from: {link}")
         soup = self.fetch_page(link)
         if not soup:
+            self._debug(f"  [DEBUG] Failed to fetch page")
             return None
+        
+        self._debug(f"  [DEBUG] Page fetched successfully")
         
         try:
             # Method 1: Look for the full description div (data-cy="adPageAdDescription")
             # This contains the complete description even if it's hidden behind "Mai mult" button
             desc_div = soup.find('div', {'data-cy': 'adPageAdDescription'})
+            self._debug(f"  [DEBUG] Method 1: Found div[data-cy='adPageAdDescription']: {desc_div is not None}")
             if desc_div:
                 # Try to get text from span inside the div first
                 desc_span = desc_div.find('span')
+                self._debug(f"  [DEBUG] Method 1: Found span inside div: {desc_span is not None}")
                 if desc_span:
                     # Get all text, preserving paragraph structure
                     desc_text = desc_span.get_text(separator='\n', strip=True)
+                    self._debug(f"  [DEBUG] Method 1: Text from span (\\n): '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                     # If that doesn't work, try with space separator
                     if not desc_text or len(desc_text.strip()) < 10:
                         desc_text = desc_span.get_text(separator=' ', strip=True)
+                        self._debug(f"  [DEBUG] Method 1: Text from span (space): '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                 else:
                     # If no span, get text directly from div
                     desc_text = desc_div.get_text(separator='\n', strip=True)
+                    self._debug(f"  [DEBUG] Method 1: Text from div (\\n): '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                     if not desc_text or len(desc_text.strip()) < 10:
                         desc_text = desc_div.get_text(separator=' ', strip=True)
+                        self._debug(f"  [DEBUG] Method 1: Text from div (space): '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                 
                 if desc_text:
                     # Clean HTML tags and normalize whitespace
                     desc_text = self._clean_description(desc_text)
+                    self._debug(f"  [DEBUG] Method 1: After cleaning: '{desc_text[:100] if desc_text else 'None'}...' (length: {len(desc_text) if desc_text else 0})")
                     # Filter out button text and other non-description content
                     if desc_text and len(desc_text.strip()) > 10:
                         desc_lower = desc_text.lower()
@@ -254,14 +290,23 @@ class OLXScraper:
                             desc_text = re.sub(r'(?i)\s*mai\s*mult\s*\.?\.?\.?\s*$', '', desc_text).strip()
                             desc_text = re.sub(r'(?i)^mai\s*mult\s*\.?\.?\.?\s*', '', desc_text).strip()
                             if desc_text and len(desc_text.strip()) > 10:
+                                self._debug(f"  [DEBUG] Method 1: SUCCESS - Returning description")
                                 return desc_text
+                        else:
+                            self._debug(f"  [DEBUG] Method 1: Filtered out (button text detected)")
+                    else:
+                        self._debug(f"  [DEBUG] Method 1: Text too short after cleaning")
+                else:
+                    self._debug(f"  [DEBUG] Method 1: No text extracted")
             
             # Method 2: Find the Descriere heading and look for description nearby
             desc_heading = soup.find('h2', {'data-sentry-source-file': 'AdDescription.tsx'}, string=re.compile('Descriere'))
+            self._debug(f"  [DEBUG] Method 2: Found h2[data-sentry-source-file='AdDescription.tsx']: {desc_heading is not None}")
             
             if not desc_heading:
                 # Try alternative search
                 desc_heading = soup.find('h2', string=re.compile('Descriere', re.I))
+                self._debug(f"  [DEBUG] Method 2: Found h2 with 'Descriere' text: {desc_heading is not None}")
             
             if desc_heading:
                 # Find the parent container
@@ -301,17 +346,25 @@ class OLXScraper:
             
             # Method 3: Fallback - search for description in common locations
             desc_div = soup.find('div', {'data-cy': 'ad_description'})
+            self._debug(f"  [DEBUG] Method 3: Found div[data-cy='ad_description']: {desc_div is not None}")
             if desc_div:
                 desc_text = desc_div.get_text(strip=True)
+                self._debug(f"  [DEBUG] Method 3: Text extracted: '{desc_text[:100] if desc_text else 'None'}...'")
                 # Check if it's just "Mai Mult"
                 if desc_text.lower() not in ['mai mult', 'mai mult...', 'show more', 'vezi mai mult']:
                     desc_text = self._clean_description(desc_text)
+                    self._debug(f"  [DEBUG] Method 3: After cleaning: '{desc_text[:100] if desc_text else 'None'}...'")
                     if desc_text:
+                        self._debug(f"  [DEBUG] Method 3: SUCCESS - Returning description")
                         return desc_text
             
         except Exception as e:
-            print(f"Error extracting description from {link}: {e}")
+            self._debug(f"  [DEBUG] ERROR extracting description from {link}: {e}")
+            if self.DEBUG_ENABLED:
+                import traceback
+                traceback.print_exc()
         
+        print(f"  -> Warning: Could not extract description from {link}")
         return None
     
     def _clean_description(self, description: str) -> str:
@@ -537,23 +590,32 @@ class OLXScraper:
                 print(f"  -> Skipped (short-term rental detected in title)")
                 continue
             
-            # Fetch description
-            description = self.fetch_description(listing['link'])
-            
-            if description:
-                # Check description for short-term rental keywords
-                if self.is_short_term_rental(description):
-                    print(f"  -> Skipped (short-term rental detected in description)")
-                    continue
-                
-                listing['description'] = description
+            # Skip description fetching for storia.ro links
+            if 'storia.ro' in listing['link']:
+                print(f"  -> Skipping description fetch for storia.ro link")
+                description = None
+                listing['description'] = None
             else:
-                print(f"  -> Warning: Could not fetch description")
-                description = ""
+                # Fetch description for non-storia.ro links
+                description = self.fetch_description(listing['link'])
+                
+                if description:
+                    # Check description for short-term rental keywords
+                    if self.is_short_term_rental(description):
+                        print(f"  -> Skipped (short-term rental detected in description)")
+                        continue
+                    
+                    listing['description'] = description
+                else:
+                    print(f"  -> Warning: Could not fetch description")
+                    description = ""
+                    listing['description'] = None
             
             # Extract floor and lift information from title and description
-            floor_info = self.extract_floor_info(listing['title'], description)
-            lift_info = self.extract_lift_info(listing['title'], description)
+            # Use empty string if description is None to avoid errors
+            description_text = description if description else ""
+            floor_info = self.extract_floor_info(listing['title'], description_text)
+            lift_info = self.extract_lift_info(listing['title'], description_text)
             
             listing['floor'] = floor_info
             listing['lift'] = lift_info
@@ -602,18 +664,44 @@ class OLXScraper:
         Returns:
             List of new listings not in database
         """
-        existing_listings = self.load_database()
+        # Load existing listings from the database file
+        existing_listings = self.load_database()  # Load all previously stored listings
         
-        # Create a set of existing listing links for quick lookup
-        existing_links = {listing['link'] for listing in existing_listings}
+        # Build a set with the links that are already stored in the database
+        existing_links = {listing['link'] for listing in existing_listings}  # Use a set for fast membership checks
         
-        # Find new listings
-        new_listings = [
-            listing for listing in current_listings
-            if listing['link'] not in existing_links
-        ]
+        # Prepare a set to track links we've already accepted in this run
+        seen_links = set()  # This avoids sending duplicate notifications for the same link in one run
         
-        return new_listings
+        # Prepare the final list of new listings, guaranteed to have unique links
+        new_listings: List[Dict] = []  # This will only contain unique, truly new listings
+        
+        # Go through all current listings and keep only those that are not in the database
+        # and that we have not already seen in this run
+        for listing in current_listings:
+            # Safely get the link from the listing dictionary
+            link = listing.get('link')  # Extract the listing URL used as a unique identifier
+            
+            # Skip entries without a valid link to avoid errors and meaningless records
+            if not link:
+                continue  # Move to the next listing if this one has no link
+            
+            # Skip listings that are already stored in the database
+            if link in existing_links:
+                continue  # This listing is not new, so we ignore it
+            
+            # Skip listings we already accepted earlier in this run (duplicate in current_listings)
+            if link in seen_links:
+                continue  # This prevents sending the same listing twice in one run
+            
+            # Mark this link as seen in the current run
+            seen_links.add(link)  # Remember that we have already accepted this link
+            
+            # Add the listing to the list of new, unique listings
+            new_listings.append(listing)  # Store the cleaned, non-duplicate listing
+        
+        # Return only the new, unique listings so Telegram is notified once per link
+        return new_listings  # The caller will use this to send notifications and update the database
     
     def update_database(self, new_listings: List[Dict]):
         """
@@ -637,6 +725,10 @@ class OLXScraper:
 if __name__ == "__main__":
     import sys
     from telegram_notifier import TelegramNotifier
+    
+    # Enable/disable debug mode (set to True to see debug output)
+    # OLXScraper.enable_debug(True)  # Uncomment to enable debug mode
+    # OLXScraper.enable_debug(False)  # Uncomment to disable debug mode
     
     scraper = OLXScraper()
     print("Starting OLX scraper...")
@@ -671,10 +763,18 @@ if __name__ == "__main__":
                     if bot_token and chat_id:
                         notifier = TelegramNotifier(bot_token, chat_id)
                         print("\nSending Telegram notifications...")
-                        if notifier.send_listings(new_listings_sorted):
-                            print("✓ Notifications sent successfully!")
-                        else:
-                            print("✗ Some notifications failed to send")
+                        try:
+                            if notifier.send_listings(new_listings_sorted):
+                                print("✓ Notifications sent successfully!")
+                            else:
+                                print("✗ Some notifications failed to send")
+                        except Exception as send_error:
+                            print(f"\n✗ Error sending Telegram notifications: {send_error}")
+                            import traceback
+                            traceback.print_exc()
+                            print("\nNew listings found:")
+                            for listing in new_listings:
+                                print(f"  - {listing['title']} - {listing['price']}€")
                     else:
                         print("\n⚠ Telegram configuration incomplete. Skipping notifications.")
                         print("New listings found:")
@@ -682,7 +782,9 @@ if __name__ == "__main__":
                             print(f"  - {listing['title']} - {listing['price']}€")
             except Exception as e:
                 print(f"\nError loading Telegram config: {e}")
-                print("New listings found:")
+                import traceback
+                traceback.print_exc()
+                print("\nNew listings found:")
                 for listing in new_listings:
                     print(f"  - {listing['title']} - {listing['price']}€")
         else:

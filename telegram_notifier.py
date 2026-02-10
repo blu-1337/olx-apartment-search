@@ -81,12 +81,12 @@ class TelegramNotifier:
         title = listing.get('title', 'N/A')
         price = listing.get('price', 0)
         link = listing.get('link', '#')
-        description = listing.get('description', 'No description available')
+        description = listing.get('description') or 'No description available'
         floor = listing.get('floor')
         lift = listing.get('lift')
         
-        # Truncate description if too long
-        if len(description) > 500:
+        # Truncate description if too long (handle None case)
+        if description and len(description) > 500:
             description = description[:500] + "..."
         
         # Build floor and lift info lines
