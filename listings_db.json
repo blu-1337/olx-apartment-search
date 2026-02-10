@@ -2891,5 +2891,14 @@
     "floor": "7/10",
     "lift": null,
     "found_at": "2026-02-10T18:41:42.374570"
+  },
+  {
+    "title": "Inchiriez apartament 3 camere, 1 Mai",
+    "price": 400.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-3-camere-1-mai-IDkeKoo.html?search_reason=search%7Corganic",
+    "description": "Inchiriez apartament 3 camere decomandat situat in cartierul 1 Mai, cu o suprafata de 77 mp, etaj intermediar, centrala termica, gresie, faianta, parchet, izolat termic, 2 bai. Apartamentul se inchiriaza pe termen lung.",
+    "floor": "intermediar",
+    "lift": null,
+    "found_at": "2026-02-10T19:46:36.651253"
   }
 ]
