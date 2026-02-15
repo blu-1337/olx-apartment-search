@@ -3044,5 +3044,41 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-02-15T09:47:58.285000"
+  },
+  {
+    "title": "Inchiriez apartament 3 camere - Centru",
+    "price": 450.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-3-camere-centru-IDjPL1A.html?search_reason=search%7Corganic",
+    "description": "Inchiriez apartament 3 camere decomandat, modern, situat in Craiova str. Bibescu et.2 suprafata utila 100 mp, centrala proprie, masina de spalat vase, parchet, izolatie termica, an constructie 1992, contract de energie electrica cu Hidroelectrica, disponibil imediat.",
+    "floor": "2/?",
+    "lift": null,
+    "found_at": "2026-02-15T13:57:57.972053"
+  },
+  {
+    "title": "inchiriez casa nemobilata VAMA CRAIOVA-Damila-Ford",
+    "price": 500.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-casa-nemobilata-vama-craiova-damila-ford-IDk6FOF.html?search_reason=search%7Corganic",
+    "description": "Casă de închiriat cu o suprafață utilă de 100 mp. Se afla pe Aleea ficusului nr 7 . Are 2 dormitoare+living+bucatarie , 2 băi și o terasă. Încălzirea se face prin pompă de căldură. Locuința este nemobilată oferindu-ți libertatea de a o amenaja după bunul plac.În apropiere există stații de autobuz tramvai si intrarea fabrica Ford - 3 minute de mers pe jos- facilitând transportul.",
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-02-15T13:57:57.972053"
+  },
+  {
+    "title": "inchiriez casa nemobilata VAMA CRAIOVA-Damila-Ford",
+    "price": 500.0,
+    "link": "https://www.publi24.ro/anunturi/imobiliare/de-inchiriat/case-vile/anunt/inchiriez-casa-nemobilata-vama-craiova-damila-ford/092i49931f7470f0ed93376i88i47id8.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-02-15T13:58:09.904368"
+  },
+  {
+    "title": "inchiriez casa nemobilata VAMA CRAIOVA-Damila-Ford",
+    "price": 500.0,
+    "link": "https://www.publi24.ro/anunturi/imobiliare/de-inchiriat/case-vile/anunt/inchiriez-casa-nemobilata-vama-craiova-damila-ford/092i49931f7470f0ed93376i88i47id8.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-02-15T13:58:09.904368"
   }
 ]
