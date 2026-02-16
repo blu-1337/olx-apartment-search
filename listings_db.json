@@ -3143,5 +3143,14 @@
     "floor": null,
     "lift": "Yes",
     "found_at": "2026-02-16T12:04:18.190768"
+  },
+  {
+    "title": "Apartament de inchiriat",
+    "price": 400.0,
+    "link": "https://www.olx.ro/d/oferta/apartament-de-inchiriat-IDkh5IN.html?search_reason=search%7Corganic",
+    "description": "Apartament zona ciupercăApartamentul dispune de centrală , aer condiționatapa proprie",
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-02-16T17:09:53.715899"
   }
 ]
