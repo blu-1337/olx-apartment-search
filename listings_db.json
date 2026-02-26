@@ -3539,5 +3539,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-02-26T11:37:56.757997"
+  },
+  {
+    "title": "Apartament pentru inchiriat!",
+    "price": 450.0,
+    "link": "https://www.olx.ro/d/oferta/apartament-pentru-inchiriat-IDjyYUH.html?search_reason=search%7Corganic",
+    "description": "Inchiriez apartament cu 3 camere, 2 bai, complet utilat. Centrală, masina de spalat, aragaz. Zona 1 mai, Ciupercă, etaj 3, lift.",
+    "floor": "3/?",
+    "lift": "Yes",
+    "found_at": "2026-02-26T12:05:15.416333"
   }
 ]
