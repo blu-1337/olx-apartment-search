@@ -3737,5 +3737,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-03-09T12:02:07.905451"
+  },
+  {
+    "title": "Inchiriez apartament 3 camere",
+    "price": 333.49,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-3-camere-IDklJIt.html?search_reason=search%7Corganic",
+    "description": "Inchiriez apartament 3 camere, Calea Bucuresti, vis a vis de Lidl, langa Kaufland si la 5 minute de Electroputere Mall! Statia de tranvai si autobuz e in fata blocului. Apartamentul este situat la et.6 si este mobilat si utilat cu masina de spalat, frigider, aragaz,tocarie interioara de lemn, usa la intrare de fier!",
+    "floor": "6/?",
+    "lift": null,
+    "found_at": "2026-03-09T16:14:00.142400"
   }
 ]
