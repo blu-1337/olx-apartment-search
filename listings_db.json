@@ -3755,5 +3755,23 @@
     "floor": "5/?",
     "lift": null,
     "found_at": "2026-03-10T12:02:11.218731"
+  },
+  {
+    "title": "Inchiriez apartament 3 camere centrala proprie, proaspat renovat.",
+    "price": 450.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-3-camere-centrala-proprie-proaspat-renovat-IDkmhho.html?search_reason=search%7Cpromoted",
+    "description": "Inchiriez apartament 3 camere zona 1 Mai,Bloc S65,pe perioada indelungata,decomandat cu centrala proprie, proaspat renovat, aproape de Facultatea de Medicina.",
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-03-10T17:06:53.312461"
+  },
+  {
+    "title": "Inchiriez apartament 3 camere centrala proprie, proaspat renovat.",
+    "price": 450.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-3-camere-centrala-proprie-proaspat-renovat-IDkmhho.html?search_reason=search%7Corganic",
+    "description": "Inchiriez apartament 3 camere zona 1 Mai,Bloc S65,pe perioada indelungata,decomandat cu centrala proprie, proaspat renovat, aproape de Facultatea de Medicina.",
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-03-10T17:06:53.312461"
   }
 ]
