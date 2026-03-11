@@ -3782,5 +3782,14 @@
     "floor": "8/10",
     "lift": "Yes",
     "found_at": "2026-03-11T13:48:30.118905"
+  },
+  {
+    "title": "Inchiriez apartament Craiova",
+    "price": 450.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-craiova-IDkmzHD.html?search_reason=search%7Corganic",
+    "description": "Descriere-Inchiriez apartament 3 camere Calea Bucuresti-Utilat complet modern etaj 5-In apropiere de electro moll-07**********95",
+    "floor": "5/?",
+    "lift": null,
+    "found_at": "2026-03-11T16:08:04.097755"
   }
 ]
