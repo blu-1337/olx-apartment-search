@@ -3809,5 +3809,23 @@
     "floor": "4/4",
     "lift": null,
     "found_at": "2026-03-12T09:07:44.526801"
+  },
+  {
+    "title": "Apartament de închiriat – 3 camere | Cartier 1 Mai – Insulă, Craiova",
+    "price": 450.0,
+    "link": "https://www.storia.ro/ro/oferta/apartament-de-nchiriat-3-camere-cartier-1-mai-insul-craiova-IDGE1B.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-03-12T09:58:02.691594"
+  },
+  {
+    "title": "Închiriez apartament cu trei camere",
+    "price": 500.0,
+    "link": "https://www.publi24.ro/anunturi/imobiliare/de-inchiriat/apartamente/apartamente-3-camere/anunt/inchiriez-apartament-cu-trei-camere/ef72f033i712707fdeeh5dh6gf3ff799.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-03-12T09:58:15.092195"
   }
 ]
