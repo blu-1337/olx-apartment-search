@@ -4043,5 +4043,14 @@
     "floor": "2/?",
     "lift": null,
     "found_at": "2026-03-17T11:50:41.368085"
+  },
+  {
+    "title": "Apartament 1 MAI -SARA",
+    "price": 400.0,
+    "link": "https://www.olx.ro/d/oferta/apartament-1-mai-sara-IDkombP.html?search_reason=search%7Corganic",
+    "description": "Apartament 4 camere etaj2/4 la 2 minute de mers pe jos fata de Facultatea de Medicina. Apartamentul este dotat cu centrala proprie, aer conditionat, masina spalat rufe, frigider, geamuri termopan si are termosistem exterior",
+    "floor": "2/4",
+    "lift": null,
+    "found_at": "2026-03-17T17:19:35.861320"
   }
 ]
