@@ -3998,5 +3998,32 @@
     "floor": "2/4",
     "lift": null,
     "found_at": "2026-03-17T07:19:20.337870"
+  },
+  {
+    "title": "Apartamentul de inchiriat",
+    "price": 500.0,
+    "link": "https://www.olx.ro/d/oferta/apartamentul-de-inchiriat-IDknZNz.html?search_reason=search%7Cpromoted",
+    "description": "Proprietar închiriez apartament 3 camere etaj parter decomandat zonă Brazdă lingă școală de șoferi ignat mai multe detalii la tel 07******01",
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-03-17T09:03:44.466918"
+  },
+  {
+    "title": "Casa de inchiriat 15 minute de centrul craiovei",
+    "price": 400.0,
+    "link": "https://www.publi24.ro/anunturi/imobiliare/de-inchiriat/case-vile/anunt/casa-de-inchiriat-15-minute-de-centrul-craiovei/d34d3h97g6f471i2e06f78h9hi752029.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-03-17T09:03:59.483864"
+  },
+  {
+    "title": "Casa de inchiriat 15 minute de centrul craiovei",
+    "price": 400.0,
+    "link": "https://www.publi24.ro/anunturi/imobiliare/de-inchiriat/case-vile/anunt/casa-de-inchiriat-15-minute-de-centrul-craiovei/d34d3h97g6f471i2e06f78h9hi752029.html",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-03-17T09:03:59.483864"
   }
 ]
