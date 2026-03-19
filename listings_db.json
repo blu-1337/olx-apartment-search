@@ -4088,5 +4088,23 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-03-18T19:18:19.723214"
+  },
+  {
+    "title": "Ofer spre închiriere – Apartament 3 camere, B-dul Nicolae Titulescu",
+    "price": 350.0,
+    "link": "https://www.olx.ro/d/oferta/ofer-spre-inchiriere-apartament-3-camere-b-dul-nicolae-titulescu-IDkiFl1.html?search_reason=search%7Cpromoted",
+    "description": "Apartament luminos și bine întreținut, situat pe Bulevardul Nicolae Titulescu, în spatele Grădinii Botanice, cu acces direct la strada principală.Bloc I2, sc. 1, etaj 5 – lift nouDetalii apartament:• 3 camere• 55 mp utili / 63 mp total• 2 balcoane, ambele la dormitoare• Mobilat• Fără centrală termicăDisponibil imediatChirie: 350 € / lună (negociabil) + garanție",
+    "floor": "5/?",
+    "lift": "Yes",
+    "found_at": "2026-03-19T06:12:02.693601"
+  },
+  {
+    "title": "Inchiriez apartament Craiova",
+    "price": 400.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-craiova-IDkmzHD.html?search_reason=search%7Cpromoted",
+    "description": "Descriere-Inchiriez apartament 3 camere Calea Bucuresti-Utilat complet modern etaj 5-In apropiere de electro moll-07**********95",
+    "floor": "5/?",
+    "lift": null,
+    "found_at": "2026-03-19T06:12:02.693601"
   }
 ]
