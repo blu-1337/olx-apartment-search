@@ -4691,5 +4691,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-04-03T11:03:51.848488"
+  },
+  {
+    "title": "Apartament Craiovita 3camere cu centrala, mobilat, utilat 8/10",
+    "price": 400.0,
+    "link": "https://www.storia.ro/ro/oferta/apartament-craiovita-3camere-cu-centrala-mobilat-utilat-8-10-IDGTBm.html",
+    "description": null,
+    "floor": "8/10",
+    "lift": null,
+    "found_at": "2026-04-03T14:28:10.731507"
   }
 ]
