@@ -4907,5 +4907,23 @@
     "floor": "2/?",
     "lift": null,
     "found_at": "2026-04-08T21:10:49.967243"
+  },
+  {
+    "title": "Închiriez apartament 3 camere",
+    "price": 400.0,
+    "link": "https://www.olx.ro/d/oferta/inchiriez-apartament-3-camere-IDkpiTk.html?search_reason=search%7Corganic",
+    "description": "Închiriez apartament 3 camere decomandate in cart 1Mai,recent renovat.centrala proprie.",
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-04-09T07:05:13.728586"
+  },
+  {
+    "title": "inchiriez apartament 3camere",
+    "price": 393.0,
+    "link": "https://www.publi24.ro/anunturi/imobiliare/de-inchiriat/apartamente/apartamente-3-camere/anunt/inchiriez-apartament-3camere/661e1i05033870i41ddf02hd5933h20e.html",
+    "description": "închiriez apartament cu trei camere decomandate in cart 1Mai, recent renovat. dispune de centrala proprie.\nID anunț\n: 1775714135",
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-04-09T07:05:29.884538"
   }
 ]
