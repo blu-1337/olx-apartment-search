@@ -5114,5 +5114,23 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-04-15T20:35:10.733953"
+  },
+  {
+    "title": "Apartament 3 camere decomandat, 65 mp, zona Lapus",
+    "price": 350.0,
+    "link": "https://www.storia.ro/ro/oferta/apartament-3-camere-decomandat-65-mp-zona-lapus-IDGNog",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-04-16T08:04:10.845331"
+  },
+  {
+    "title": "Apartament 3 camere 65mp, centrala termica, aer conditionat, Craiovita",
+    "price": 400.0,
+    "link": "https://www.storia.ro/ro/oferta/apartament-3-camere-65mp-centrala-termica-aer-conditionat-craiovita-IDGLTW",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-04-16T08:04:10.845331"
   }
 ]
