@@ -5222,5 +5222,14 @@
     "floor": null,
     "lift": null,
     "found_at": "2026-04-19T10:05:34.981599"
+  },
+  {
+    "title": "Apartament 3 camere Pta Garii,str.Basarabia,la H-uri,etaj 1,CT,AC.",
+    "price": 400.0,
+    "link": "https://www.storia.ro/ro/oferta/apartament-3-camere-pta-garii-str-basarabia-la-h-uri-etaj-1-ct-ac-IDGJWG",
+    "description": null,
+    "floor": "1/?",
+    "lift": null,
+    "found_at": "2026-04-19T11:55:05.212328"
   }
 ]
