@@ -5276,5 +5276,23 @@
     "floor": "2/?",
     "lift": null,
     "found_at": "2026-04-19T19:54:19.082948"
+  },
+  {
+    "title": "Apartament 4 camere mobilat,utilat,str.Dezrobirii-Pta Centrala,CT,AC.",
+    "price": 430.0,
+    "link": "https://www.storia.ro/ro/oferta/apartament-4-camere-mobilat-utilat-str-dezrobirii-pta-centrala-ct-ac-IDGyzd",
+    "description": null,
+    "floor": null,
+    "lift": null,
+    "found_at": "2026-04-20T09:18:04.517011"
+  },
+  {
+    "title": "3 decomandate - etaj 3 - centrala proprie - mobilat - utilat - 1Mai",
+    "price": 400.0,
+    "link": "https://www.storia.ro/ro/oferta/3-decomandate-etaj-3-centrala-proprie-mobilat-utilat-1mai-IDGNKQ",
+    "description": null,
+    "floor": "3/?",
+    "lift": null,
+    "found_at": "2026-04-20T09:18:04.517011"
   }
 ]
