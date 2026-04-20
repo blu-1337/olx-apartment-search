@@ -2,8 +2,8 @@ name: OLX Apartment Scraper
 
 on:
   # Run every 10 minutes
-  schedule:
-    - cron: '*/10 * * * *'
+  # schedule:
+  #   - cron: '*/10 * * * *'
   # Allow manual triggering
   workflow_dispatch:
 
